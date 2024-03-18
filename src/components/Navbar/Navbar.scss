@@ -10,7 +10,7 @@
   background-color: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blu4r(4px);
-  
+
   .logo{
     display: flex;
     align-items: center;
@@ -29,20 +29,20 @@
     position: relative;
 
     input{
-      width: 400px;
+      width: 350px;
       height: 40px;
       border-radius: 50px;
       border: 0px;
-      padding: 0px 30px 0px 20px;
-      background-color: var(--blue-color);
-      color: #fff;
+      padding: 0px 30px 3px 20px;
+      background-color: #f2f0ef;
+      color: #959a9f;
 
       transition: all 0.3s;
 
-      font-size: 16px;
+      font-size: 17px;
 
       &::placeholder{
-        color: #fff;
+        color: #959a9f;
         opacity: 0.7;
       }
 
@@ -51,10 +51,11 @@
       }
     }
 
-    i{
+    svg{
+      height: 20px;
       position: relative;
-      left: -30px;
-      color: #fff;
+      left: -35px;
+      color: #959a9f;
     }
   }
 }

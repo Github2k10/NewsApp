@@ -48,50 +48,47 @@ const Home = () => {
       <Navbar />
 
       <div className="home">
-        <div className="news-loader">
-          {news ? (
-            showNews.map((article) => (
+        {news ? (
+          <div className="news-loader">
+            {showNews.map((article) => (
               <div className="news" key={article.title + article.publishedAt}>
                 <img className="news-img" src={article.urlToImage} alt="" />
-                <h2 className="news-title poppins-regular">{article.title}</h2>
-                <p className="news-description poppins-light">
-                  {article.description}
-                </p>
+                <h2 className="news-title">{article.title}</h2>
+                <p className="news-description">{article.description}</p>
                 <div className="news-details">
-                  <p className="view poppins-light">Read More</p>
-                  <p className="date poppins-light">
-                    {changeDate(article.publishedAt)}
-                  </p>
+                  <a href={article.url} target="_blank" className="view">
+                    Read More
+                  </a>
+                  <p className="date">{changeDate(article.publishedAt)}</p>
                 </div>
               </div>
-            ))
-          ) : (
-            <LoadingPage />
-          )}
-
-          <div className="pagination">
-            <button
-              className="prev"
-              onClick={() => {
-                if (page > 1) {
-                  setPage(page - 1);
-                }
-              }}
-            >
-              <i className="fa-solid fa-arrow-left-long"></i>
-            </button>
-            <button
-              className="next"
-              onClick={() => {
-                if (page < Math.ceil(news.length / 10)) {
-                  setPage(page + 1);
-                }
-              }}
-            >
-              <i className="fa-solid fa-arrow-right-long"></i>
-            </button>
+            ))}
+            <div className="pagination">
+              <button
+                className="prev"
+                onClick={() => {
+                  if (page > 1) {
+                    setPage(page - 1);
+                  }
+                }}
+              >
+                <i className="fa-solid fa-arrow-left-long"></i>
+              </button>
+              <button
+                className="next"
+                onClick={() => {
+                  if (page < Math.ceil(news.length / 10)) {
+                    setPage(page + 1);
+                  }
+                }}
+              >
+                <i className="fa-solid fa-arrow-right-long"></i>
+              </button>
+            </div>
           </div>
-        </div>
+        ) : (
+          <LoadingPage />
+        )}
 
         <div className="news-recent"></div>
       </div>

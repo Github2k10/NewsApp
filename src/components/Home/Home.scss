@@ -7,11 +7,12 @@
   .news-loader{
     width: 50%;
     height: fit-content;
+    margin-bottom: 50px;
     // border: 1px solid black;
 
     .news{
       width: 100%;
-      margin-bottom: 30px;
+      margin-bottom: 50px;
       // border: 1px solid black;
 
       .news-img{
@@ -21,31 +22,35 @@
       }
 
       .news-title{
-        font-size: 20px;
-        font-weight: 700;
+        font-size: 24px;
+        font-weight: 800;
         margin: 20px 0;
         line-height: 1;
       }
 
       .news-description{
-        font-size: 18px;
+        font-size: 20px;
+        line-height: 1;
+        font-weight: 500;
         margin: 10px 0;
       }
 
       .news-details{
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: last baseline;
         font-size: 16px;
         margin: 20px 0;
 
         width: 90%;
 
         .view{
-          padding: 10px 20px;
+          font-size: 16px;
+          padding: 8px 20px 10px 20px;
           border-radius: 50px;
           color: white;
           background-color: var(--blue-color);
+          text-decoration: none;
 
           cursor: pointer;
 
@@ -56,6 +61,7 @@
         }
 
         .date{
+          font-size: 18px;
           color: gray;
           font-weight: 500;
         }
@@ -64,24 +70,26 @@
 
     .pagination{
       display: flex;
-      justify-content: space-evenly;
-      align-items: center;
 
       button{
         border: 0;
-        border-radius: 25px;
+        border-radius: 20px;
 
         i{
-          font-size: 25px;
+          font-size: 20px;
           color: var(--blue-color);
 
           cursor: pointer;
-          margin: 20px;
+          margin: 18px;
         }
 
         &:active{
           transform: scale(0.9);
           transition: all 0.1s;
+        }
+
+        &:first-child{
+          margin-right: 20px;
         }
       }
     }
