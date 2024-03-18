@@ -35,21 +35,21 @@ const Home = () => {
 
       <div className="home">
         <div className="news-loader">
-          <div className="news">
-            <img className="news-img" src={newsArticles[0].image} alt="" />
-            <h2 className="news-title poppins-regular">
-              {newsArticles[0].title}
-            </h2>
-            <p className="news-description poppins-light">
-              {newsArticles[0].description}
-            </p>
-            <div className="news-details">
-              <p className="view poppins-light">Read More</p>
-              <p className="date poppins-light">
-                {changeDate(newsArticles[0].publishedAt)}
+          {newsArticles.map((article) => (
+            <div className="news">
+              <img className="news-img" src={article.image} alt="" />
+              <h2 className="news-title poppins-regular">{article.title}</h2>
+              <p className="news-description poppins-light">
+                {article.description}
               </p>
+              <div className="news-details">
+                <p className="view poppins-light">Read More</p>
+                <p className="date poppins-light">
+                  {changeDate(article.publishedAt)}
+                </p>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
 
         <div className="news-recent"></div>
