@@ -13,14 +13,7 @@ const Navbar = () => {
 
         <div className="search">
           <input type="text" placeholder="Search" />
-          <svg
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            xmlns="http://www.w3.org/2000/svg"
-            class="line"
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-          >
+          <svg className="line" viewBox="0 0 24 24" width="24" height="24">
             <g stroke="#48525C" fill="none">
               <circle
                 cx="11.36167"
@@ -30,7 +23,7 @@ const Navbar = () => {
                 fill="none"
               ></circle>
               <line
-                class="svgC"
+                className="svgC"
                 x1="22"
                 x2="19.9332"
                 y1="22"
