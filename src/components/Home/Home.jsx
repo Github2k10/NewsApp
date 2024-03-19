@@ -104,7 +104,7 @@ const Home = () => {
             </div>
           </div>
         ) : (
-          <LoadingPage />
+          <></>
         )}
 
         <div className="news-recent">
