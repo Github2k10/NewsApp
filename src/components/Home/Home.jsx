@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Navbar, LoadingPage } from "../index";
 import useFetch from "../../services/FetchNews";
+import images from "../../assets/images";
 import "./Home.scss";
 
 const newsApi =
@@ -63,7 +64,12 @@ const Home = () => {
           <div className="news-loader">
             {showNews.map((article) => (
               <div className="news" key={article.title + article.publishedAt}>
-                <img className="news-img" src={article.urlToImage} alt="" />
+                <img
+                  className="news-img"
+                  src={article.urlToImage || images.noImage}
+                  onError={(e) => (e.target.src = images.noImage)}
+                  alt=""
+                />
                 <h2 className="news-title">{article.title}</h2>
                 <p className="news-description">{article.description}</p>
                 <div className="news-details">
