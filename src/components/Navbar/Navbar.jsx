@@ -1,7 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import images from "../../assets/images";
 import "./Navbar.scss";
+
+const search = (e) => {
+  e.preventDefault();
+
+  const search = e.target[0].value;
+  console.log(search);
+  if (search) {
+    window.location.href = `/search?keyword=${search}`;
+  }
+};
 
 const Navbar = () => {
   return (
@@ -11,7 +21,7 @@ const Navbar = () => {
           <img src={images.logo} alt="logo" />
         </div>
 
-        <div className="search">
+        <form className="search" onSubmit={(e) => search(e)}>
           <input type="text" placeholder="Search" />
           <svg className="line" viewBox="0 0 24 24" width="24" height="24">
             <g stroke="#48525C" fill="none">
@@ -33,7 +43,7 @@ const Navbar = () => {
               ></line>
             </g>
           </svg>
-        </div>
+        </form>
       </div>
     </>
   );

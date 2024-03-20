@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import { Navbar, LoadingPage } from "../index";
+import { Navbar, LoadingPage, NewsItem } from "../index";
 import useFetch from "../../services/FetchNews";
-import images from "../../assets/images";
+import changeDate from "../../services/ChangeDate";
 import "./Home.scss";
+import "../../style/pagination.scss";
 
 const newsApi =
   "https://newsapi.org/v2/everything?q=keyword&apiKey=841ebe7d9a2b4b8ea9994246bdc8ab14";
@@ -11,34 +12,10 @@ const newsApi =
 const topHeading =
   "https://newsapi.org/v2/top-headlines?country=us&apiKey=841ebe7d9a2b4b8ea9994246bdc8ab14";
 
-const changeDate = (date) => {
-  let months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-
-  let d = new Date(date);
-  let day = d.getDate();
-  let month = d.getMonth() + 1;
-  let year = d.getFullYear();
-  return `${months[month - 1]} ${day}, ${year}`;
-};
-
 const Home = () => {
   const data = useFetch(newsApi);
   const news = data[0].articles;
   const recentPost = useFetch(topHeading)[0].articles;
-  const [page, setPage] = useState(Math.random() * 10 + 1);
   const [showNews, setShowNews] = useState([]);
   const [recent, setRecent] = useState([]);
 
@@ -63,22 +40,7 @@ const Home = () => {
         {news ? (
           <div className="news-loader">
             {showNews.map((article) => (
-              <div className="news" key={article.title + article.publishedAt}>
-                <img
-                  className="news-img"
-                  src={article.urlToImage || images.noImage}
-                  onError={(e) => (e.target.src = images.noImage)}
-                  alt=""
-                />
-                <h2 className="news-title">{article.title}</h2>
-                <p className="news-description">{article.description}</p>
-                <div className="news-details">
-                  <a href={article.url} target="_blank" className="view">
-                    Read More
-                  </a>
-                  <p className="date">{changeDate(article.publishedAt)}</p>
-                </div>
-              </div>
+              <NewsItem article={article} key={article.title} />
             ))}
             <div className="pagination">
               <button

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { Home, ErrorPage, LoadingPage } from "./components";
+import { Home, ErrorPage, Search } from "./components";
 import "./index.css";
 
 const route = createBrowserRouter([
@@ -13,7 +13,7 @@ const route = createBrowserRouter([
   },
   {
     path: "/search",
-    element: <LoadingPage />,
+    element: <Search />,
     errorElement: <ErrorPage />,
   },
 ]);
