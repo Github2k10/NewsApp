@@ -4,7 +4,6 @@ import { Navbar, LoadingPage, NewsItem } from "../index";
 import useFetch from "../../services/FetchNews";
 import changeDate from "../../services/ChangeDate";
 import "./Home.scss";
-import "../../style/pagination.scss";
 
 const newsApi =
   "https://newsapi.org/v2/everything?q=keyword&apiKey=841ebe7d9a2b4b8ea9994246bdc8ab14";

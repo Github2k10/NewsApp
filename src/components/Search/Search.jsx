@@ -4,9 +4,9 @@ import { useLocation } from "react-router-dom";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import NewsItem from "../NewsItem/NewsItem";
 import useFetch from "../../services/FetchNews";
+import Pagination from "../Pagination/Pagination";
 import Navbar from "../Navbar/Navbar";
 import "./Search.scss";
-import "../../style/pagination.scss";
 
 const Search = () => {
   const location = useLocation();
@@ -52,28 +52,7 @@ const Search = () => {
               <NewsItem article={item} />
             ))}
           </div>
-          <div className="pagination">
-            <button
-              className="prev"
-              onClick={() => {
-                if (page > 1) {
-                  setPage(page - 1);
-                }
-              }}
-            >
-              <i className="fa-solid fa-arrow-left-long"></i>
-            </button>
-            <button
-              className="next"
-              onClick={() => {
-                if (page < Math.ceil(news.length / 10)) {
-                  setPage(page + 1);
-                }
-              }}
-            >
-              <i className="fa-solid fa-arrow-right-long"></i>
-            </button>
-          </div>
+          <Pagination page={page} setPage={setPage} length={news.length} />
         </div>
       ) : (
         <LoadingPage />
