@@ -8,8 +8,10 @@ const Pagination = ({ page, setPage, length }) => {
       <button
         className="prev"
         onClick={() => {
-          if (page > 1) {
-            setPage(page - 1);
+          if (page - 5 > 0) {
+            setPage(page - 5);
+          } else {
+            setPage(0);
           }
         }}
       >
@@ -18,8 +20,10 @@ const Pagination = ({ page, setPage, length }) => {
       <button
         className="next"
         onClick={() => {
-          if (page < Math.ceil(length / 10)) {
-            setPage(page + 1);
+          if (page + 5 < length) {
+            setPage(page + 5);
+          } else {
+            setPage(length - 5);
           }
         }}
       >

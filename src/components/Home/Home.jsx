@@ -17,14 +17,13 @@ const Home = () => {
   const news = data[0].articles;
   const recentPost = useFetch(topHeading)[0].articles;
 
-  const [page, setPage] = useState(Math.random() * 10 + 1);
+  const [page, setPage] = useState(0);
   const [showNews, setShowNews] = useState([]);
   const [recent, setRecent] = useState([]);
 
   useEffect(() => {
     if (news) {
-      const newsPerPage = (page - 1) * 5;
-      setShowNews(news.slice(newsPerPage > 1 ? newsPerPage : 1, page * 5));
+      setShowNews(news.slice(page, page + 5));
     }
   }, [news, page]);
 
@@ -45,7 +44,7 @@ const Home = () => {
               <NewsItem article={article} key={article.title} />
             ))}
 
-            <Pagination page={page} setPage={setPage} lenght={news.length} />
+            <Pagination page={page} setPage={setPage} length={news.length} />
           </div>
 
           <div className="news-recent">
