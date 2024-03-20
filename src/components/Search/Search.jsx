@@ -29,7 +29,6 @@ const Search = () => {
   const data = useFetch(searchApi);
   useEffect(() => {
     if (data) {
-      console.log(data[0].articles);
       setNews(data[0].articles);
     }
   }, [data]);

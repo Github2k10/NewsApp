@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import images from "../../assets/images";
 import "./Navbar.scss";
@@ -17,9 +18,9 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar">
-        <div className="logo">
+        <Link to="/" className="logo">
           <img src={images.logo} alt="logo" />
-        </div>
+        </Link>
 
         <form className="search" onSubmit={(e) => search(e)}>
           <input type="text" placeholder="Search" />
