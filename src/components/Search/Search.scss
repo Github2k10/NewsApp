@@ -9,4 +9,21 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
   }
+
+  @media screen and (max-width: 1000px) {
+    width: 95%;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 90%;
+    .news-articles{
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .news-articles{
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
 }

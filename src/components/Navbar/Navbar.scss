@@ -53,9 +53,22 @@
 
     svg{
       height: 20px;
-      position: relative;
-      left: -35px;
+      position: absolute;
+      right: 10px;
       color: #959a9f;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: 25px 20px;
+  }
+
+  @media screen and (max-width: 550px) {
+    justify-content: center;
+    padding: 10px;
+
+    .search{
+      margin-top: 10px;
     }
   }
 }

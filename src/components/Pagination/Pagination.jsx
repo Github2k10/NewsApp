@@ -2,14 +2,14 @@ import React from "react";
 
 import "./pagination.scss";
 
-const Pagination = ({ page, setPage, length }) => {
+const Pagination = ({ page, setPage, length, noOfPage }) => {
   return (
     <div className="pagination">
       <button
         className="prev"
         onClick={() => {
-          if (page - 5 > 0) {
-            setPage(page - 5);
+          if (page - noOfPage > 0) {
+            setPage(page - noOfPage);
           } else {
             setPage(0);
           }
@@ -20,10 +20,10 @@ const Pagination = ({ page, setPage, length }) => {
       <button
         className="next"
         onClick={() => {
-          if (page + 5 < length) {
-            setPage(page + 5);
+          if (page + noOfPage < length) {
+            setPage(page + noOfPage);
           } else {
-            setPage(length - 5);
+            setPage(length - noOfPage);
           }
         }}
       >

@@ -4,6 +4,7 @@ import { Navbar, LoadingPage, NewsItem } from "../index";
 import useFetch from "../../services/FetchNews";
 import changeDate from "../../services/ChangeDate";
 import Pagination from "../Pagination/Pagination";
+import images from "../../assets/images";
 import "./Home.scss";
 
 const newsApi =
@@ -44,7 +45,12 @@ const Home = () => {
               <NewsItem article={article} key={article.title} />
             ))}
 
-            <Pagination page={page} setPage={setPage} length={news.length} />
+            <Pagination
+              page={page}
+              setPage={setPage}
+              length={news.length}
+              noOfPage={5}
+            />
           </div>
 
           <div className="news-recent">
@@ -58,7 +64,11 @@ const Home = () => {
                 key={news.title}
                 style={{ textDecoration: "none" }}
               >
-                <img src={news.urlToImage} alt={news.title} />
+                <img
+                  src={news.urlToImage || images.noImage}
+                  onError={(e) => (e.target.src = images.noImage)}
+                  alt={news.title}
+                />
                 <div className="rec-details">
                   <h1>{news.title}</h1>
                   <p>{changeDate(news.publishedAt)}</p>

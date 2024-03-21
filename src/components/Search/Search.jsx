@@ -14,7 +14,7 @@ const Search = () => {
   const [keyword, setKeyword] = useState("");
 
   const [showNews, setShowNews] = useState([]);
-  const [page, setPage] = useState(Math.random() * 10 + 1);
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -35,8 +35,7 @@ const Search = () => {
 
   useEffect(() => {
     if (news) {
-      const newsPerPage = (page - 1) * 6;
-      setShowNews(news.slice(newsPerPage > 1 ? newsPerPage : 1, page * 6));
+      setShowNews(news.slice(page, page + 6));
     }
   }, [news, page]);
 
@@ -51,7 +50,12 @@ const Search = () => {
               <NewsItem article={item} />
             ))}
           </div>
-          <Pagination page={page} setPage={setPage} length={news.length} />
+          <Pagination
+            page={page}
+            setPage={setPage}
+            length={news.length}
+            noOfPage={6}
+          />
         </div>
       ) : (
         <LoadingPage />
