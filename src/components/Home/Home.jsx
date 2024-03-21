@@ -8,13 +8,13 @@ import images from "../../assets/images";
 import "./Home.scss";
 
 const newsApi =
-  "https://newsapi.org/v2/everything?q=keyword&apiKey=841ebe7d9a2b4b8ea9994246bdc8ab14";
+  "https://newsapi.org/v2/top-headlines?country=us&apiKey=841ebe7d9a2b4b8ea9994246bdc8ab14";
 
 const topHeading =
   "https://newsapi.org/v2/top-headlines?country=us&apiKey=841ebe7d9a2b4b8ea9994246bdc8ab14";
 
 const Home = () => {
-  const [page, setPage] = useState(Math.random() * 50);
+  const [page, setPage] = useState(0);
   const [showNews, setShowNews] = useState([]);
   const [recent, setRecent] = useState([]);
   const recentPost = useFetch(topHeading)[0].articles;

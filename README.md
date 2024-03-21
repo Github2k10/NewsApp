@@ -16,7 +16,7 @@ Make sure you have the following installed before running the application:
 
 ## Installation
 
-1. Clone the repository to your local machine:`git clone https://github.com/Github2k10/NewsApp.git`
+1. Clone the repository to your local machine: `git clone https://github.com/Github2k10/NewsApp.git`
 
 2. Navigate to the project directory: `cd NewsApp`
 
