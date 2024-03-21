@@ -14,13 +14,13 @@ const topHeading =
   "https://newsapi.org/v2/top-headlines?country=us&apiKey=841ebe7d9a2b4b8ea9994246bdc8ab14";
 
 const Home = () => {
-  const data = useFetch(newsApi);
-  const news = data[0].articles;
-  const recentPost = useFetch(topHeading)[0].articles;
-
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(Math.random() * 50);
   const [showNews, setShowNews] = useState([]);
   const [recent, setRecent] = useState([]);
+  const recentPost = useFetch(topHeading)[0].articles;
+  const data = useFetch(newsApi);
+
+  const news = data[0].articles;
 
   useEffect(() => {
     if (news) {

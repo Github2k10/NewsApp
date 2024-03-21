@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import images from "../../assets/images";
@@ -8,7 +8,6 @@ const search = (e) => {
   e.preventDefault();
 
   const search = e.target[0].value;
-  console.log(search);
   if (search) {
     window.location.href = `/search?keyword=${search}`;
   }

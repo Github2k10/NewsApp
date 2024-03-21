@@ -10,11 +10,10 @@ import "./Search.scss";
 
 const Search = () => {
   const location = useLocation();
-  const [news, setNews] = useState([]);
-  const [keyword, setKeyword] = useState("");
-
-  const [showNews, setShowNews] = useState([]);
   const [page, setPage] = useState(0);
+  const [news, setNews] = useState([]);
+  const [keyword, setKeyword] = useState();
+  const [showNews, setShowNews] = useState([]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
