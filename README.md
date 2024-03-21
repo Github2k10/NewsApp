@@ -16,17 +16,20 @@ Make sure you have the following installed before running the application:
 
 ## Installation
 
-1. Clone the repository to your local machine: <br>
-   `git clone https://github.com/Github2k10/NewsApp.git`
+1. Clone the repository to your local machine:`git clone https://github.com/Github2k10/NewsApp.git`
 
-2. Navigate to the project directory: <br>
-   `cd NewsApp`
+2. Navigate to the project directory: `cd NewsApp`
 
-3. Install dependencies: <br>
-   `npm install`
+3. Install dependencies: `npm install`
 
 ## Usage
 
 1. Start the development server: `npm run dev`
 
 2. Open your browser and go to http://localhost:5173/ to view the application.
+
+## Images
+
+  <img src="./src/assets/picture1.png"> 
+  <br> <br>
+  <img src="./src/assets/picture2.png">

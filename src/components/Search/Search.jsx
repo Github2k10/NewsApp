@@ -12,7 +12,7 @@ const Search = () => {
   const location = useLocation();
   const [page, setPage] = useState(0);
   const [news, setNews] = useState([]);
-  const [keyword, setKeyword] = useState();
+  const [keyword, setKeyword] = useState("");
   const [showNews, setShowNews] = useState([]);
 
   useEffect(() => {
