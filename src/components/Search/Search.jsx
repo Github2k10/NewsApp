@@ -1,36 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
 
 import LoadingPage from "../LoadingPage/LoadingPage";
 import NewsItem from "../NewsItem/NewsItem";
-import useFetch from "../../services/FetchNews";
 import Pagination from "../Pagination/Pagination";
-import Navbar from "../Navbar/Navbar";
 import "./Search.scss";
+import axios from "axios";
 
-const Search = () => {
-  const location = useLocation();
+const Search = ({ Context }) => {
+  const context = useContext(Context);
   const [page, setPage] = useState(0);
-  const [news, setNews] = useState([]);
-  const [keyword, setKeyword] = useState("");
+  const [news, setNews] = useState(null);
   const [showNews, setShowNews] = useState([]);
 
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const keywordParam = searchParams.get("keyword");
-    if (keywordParam) {
-      setKeyword(keywordParam);
-    }
-  }, [location.search]);
+  const searchApi = `https://newsapi.org/v2/everything?q=${context.keyword}&apiKey=841ebe7d9a2b4b8ea9994246bdc8ab14`;
 
-  const searchApi = `https://newsapi.org/v2/everything?q=${keyword}&apiKey=841ebe7d9a2b4b8ea9994246bdc8ab14`;
-
-  const data = useFetch(searchApi);
   useEffect(() => {
-    if (data) {
-      setNews(data[0].articles);
-    }
-  }, [data]);
+    setNews(null);
+    setPage(0);
+
+    axios.get(searchApi).then((res) => setNews(res.data.articles));
+  }, [context.keyword]);
 
   useEffect(() => {
     if (news) {
@@ -40,13 +29,12 @@ const Search = () => {
 
   return (
     <>
-      <Navbar />
-
       {news ? (
         <div className="news-container">
+          <h1 className="search-heading">Search: {context.keyword}</h1>
           <div className="news-articles">
             {showNews.map((item) => (
-              <NewsItem article={item} />
+              <NewsItem article={item} key={item.title} />
             ))}
           </div>
           <Pagination

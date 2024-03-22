@@ -5,6 +5,9 @@ import changeDate from "../../services/ChangeDate";
 import "./NewsItem.scss";
 
 const NewsItem = ({ article }) => {
+  if (article.content == "[Removed]" || article.content == "null") {
+    return <></>;
+  }
   return (
     <div className="news" key={article.title + article.publishedAt}>
       <img

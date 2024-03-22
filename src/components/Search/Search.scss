@@ -1,8 +1,13 @@
 .news-container{
   width: 80%;
   margin: auto;
-  padding-top: 120px;
+  padding-top: 100px;
   margin-bottom: 50px;
+
+  .search-heading{
+    font-weight: bolder;
+    margin-bottom: 50px;
+  }
 
   .news-articles{
     display: grid;

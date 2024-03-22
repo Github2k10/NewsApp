@@ -1,16 +1,20 @@
-import React, { useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React, { useState, createContext, useEffect } from "react";
 
-import { Home } from "./components";
+import { Navbar, Home, Search } from "./components";
 import "./App.scss";
 
-const route = createBrowserRouter([{
-  path: "/",
-  element: <Home />
-}]);
+const Context = createContext();
 
 function App() {
-  return <></>;
+  const [flag, setFlag] = useState(true);
+  const [keyword, setKeyword] = useState("");
+
+  return (
+    <Context.Provider value={{ flag, setFlag, keyword, setKeyword }}>
+      <Navbar Context={Context} />
+      {flag ? <Home /> : <Search Context={Context} />}
+    </Context.Provider>
+  );
 }
 
 export default App;

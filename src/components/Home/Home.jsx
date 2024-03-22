@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import { Navbar, LoadingPage, NewsItem } from "../index";
+import { LoadingPage, NewsItem } from "../index";
 import useFetch from "../../services/FetchNews";
 import changeDate from "../../services/ChangeDate";
 import Pagination from "../Pagination/Pagination";
 import images from "../../assets/images";
 import "./Home.scss";
+import axios from "axios";
 
 const newsApi =
   "https://newsapi.org/v2/top-headlines?country=us&apiKey=841ebe7d9a2b4b8ea9994246bdc8ab14";
@@ -14,18 +15,31 @@ const topHeading =
   "https://newsapi.org/v2/top-headlines?country=us&apiKey=841ebe7d9a2b4b8ea9994246bdc8ab14";
 
 const Home = () => {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(Math.random() * 20);
   const [showNews, setShowNews] = useState([]);
   const [recent, setRecent] = useState([]);
   const recentPost = useFetch(topHeading)[0].articles;
-  const data = useFetch(newsApi);
-
-  const news = data[0].articles;
+  const [news, setNews] = useState([]);
 
   useEffect(() => {
-    if (news) {
-      setShowNews(news.slice(page, page + 5));
-    }
+    axios
+      .get(newsApi)
+      .then((res) => setShowNews(res.data.articles.slice(page, page + 5)))
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    setInterval(() => {
+      axios
+        .get(newsApi)
+        .then((res) => setNews(res.data.articles))
+        .catch((err) => console.log(err));
+
+      if (news) {
+        setShowNews(news.slice(page, page + 5));
+      }
+      return clearInterval();
+    }, 1000 * 60 * 60);
   }, [news, page]);
 
   useEffect(() => {
@@ -36,8 +50,6 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
-
       {news && recentPost ? (
         <div className="home">
           <div className="news-loader">

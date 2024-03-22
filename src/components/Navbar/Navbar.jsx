@@ -1,27 +1,40 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 
 import images from "../../assets/images";
 import "./Navbar.scss";
 
-const search = (e) => {
-  e.preventDefault();
+const Navbar = ({ Context }) => {
+  const context = useContext(Context);
 
-  const search = e.target[0].value;
-  if (search) {
-    window.location.href = `/search?keyword=${search}`;
-  }
-};
-
-const Navbar = () => {
   return (
     <>
       <div className="navbar">
-        <Link to="/" className="logo">
-          <img src={images.logo} alt="logo" />
-        </Link>
+        <div className="logo">
+          <img
+            onClick={() => {
+              context.setKeyword("");
+              context.setFlag(true);
+            }}
+            src={images.logo}
+            alt="logo"
+          />
+        </div>
 
-        <form className="search" onSubmit={(e) => search(e)}>
+        <form
+          className="search"
+          onSubmit={(e) => {
+            e.preventDefault();
+
+            const search = e.target[0].value;
+
+            e.target[0].value = "";
+            e.target[0].blur();
+            if (search) {
+              context.setKeyword(search);
+              context.setFlag(false);
+            }
+          }}
+        >
           <input type="text" placeholder="Search" />
           <svg className="line" viewBox="0 0 24 24" width="24" height="24">
             <g stroke="#48525C" fill="none">
